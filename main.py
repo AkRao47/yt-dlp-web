@@ -1,23 +1,30 @@
-from flask import Flask,render_template,request
-import yt_dlp, json, re
+from flask import Flask, render_template, request
+import yt_dlp
+import json
+import re
+
 
 def download_regex(input_text, localformat):
     try:
         return re.search(r'"format_id": "' + localformat + '".*?url": "(https://.*?)"', input_text, re.IGNORECASE).group(1)
-    except:
+    except None:
         return False
+
 
 def thumbnail_regex(input_text):
     return re.search(r'.*?watch\?v=(.*?)\Z', input_text, re.IGNORECASE).group(1)
+
 
 app = Flask(__name__, template_folder='./static-html/')
 @app.route('/')
 def home():
     return render_template('form.html')
 
+
 @app.route('/data/False')
 def error():
     return "Format was not found! <a href= \"{}\">Try again!</a>".format(request.host_url)
+
 
 @app.route('/data/', methods = ['POST', 'GET'])
 def data():
@@ -32,7 +39,7 @@ def data():
             jstring = json.dumps(info)
             final_link = download_regex(jstring, request.form['format'])
             thumbnail_link = "https://i.ytimg.com/vi/" + thumbnail_regex(request.form['yt_url']) + "/0.jpg"
-            if final_link == False or final_link == "None":
+            if final_link == False or final_link == None:
                 error = "Format not found! Make sure you chose a format that exists on the video!\nMade by SamzyDev"
             else:
                 error = "Made by SamzyDev"
@@ -49,5 +56,6 @@ def data():
                 send_format = "Unknown Format"
 
         return render_template('download.html',download_link = final_link, format=send_format, error=error, thumbnail_link = thumbnail_link)
+
 
 app.run(host='0.0.0.0', port=80)
