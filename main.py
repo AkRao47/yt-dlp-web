@@ -58,7 +58,11 @@ def data():
             case _:
                 send_format = "Unknown Format"
 
-        return render_template('download.html', download_link=final_link, format=send_format, error=error, thumbnail_link=thumbnail_link)
+        return render_template('download.html', 
+                               download_link=final_link, 
+                               format=send_format, 
+                               error=error, 
+                               thumbnail_link=thumbnail_link)
 
 
 app.run(host='0.0.0.0', port=80)
