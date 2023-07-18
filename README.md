@@ -29,3 +29,9 @@ I made this python script to learn more about python and flask. This is my first
 ## Check out the Blog!
 
 I will make a post about this project and when I do it will be linked here!
+## Roadmap
+
+- Additional options for video qualities
+
+- Automate format selection
+
