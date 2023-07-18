@@ -16,6 +16,8 @@ def thumbnail_regex(input_text):
 
 
 app = Flask(__name__, template_folder='./static-html/')
+
+
 @app.route('/')
 def home():
     return render_template('form.html')
@@ -26,7 +28,7 @@ def error():
     return "Format was not found! <a href= \"{}\">Try again!</a>".format(request.host_url)
 
 
-@app.route('/data/', methods = ['POST', 'GET'])
+@app.route('/data/', methods=['POST', 'GET'])
 def data():
     if request.method == 'GET':
         return f"This is a POST API, there is nothing for a GET request here..."
