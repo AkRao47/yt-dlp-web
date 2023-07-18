@@ -31,17 +31,18 @@ def error():
 @app.route('/data/', methods=['POST', 'GET'])
 def data():
     if request.method == 'GET':
-        return f"This is a POST API, there is nothing for a GET request here..."
+        return "This is a POST API, there is nothing for a GET request here..."
     if request.method == 'POST':
-        if re.match(r'https://www\.youtube\.com/watch\?v=[A-Za-z0-9]+', request.form['yt_url'], re.IGNORECASE) == None:
-            return "Given URL did not meet requirements!<br>Make sure it is in the following format:<br>https://www.youtube.com/watch?v=CuBm69OolMk"
+        if re.match(r'https://www\.youtube\.com/watch\?v=[A-Za-z0-9]+', request.form['yt_url'], re.IGNORECASE) is None:
+            return "Given URL did not meet requirements!<br>Make sure it is in the following format:" 
+        +"<br>https://www.youtube.com/watch?v=CuBm69OolMk"
         ydl_opts = {}
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(request.form['yt_url'], False)
             jstring = json.dumps(info)
             final_link = download_regex(jstring, request.form['format'])
             thumbnail_link = "https://i.ytimg.com/vi/" + thumbnail_regex(request.form['yt_url']) + "/0.jpg"
-            if final_link == False or final_link == None:
+            if final_link is False or final_link is None:
                 error = "Format not found! Make sure you chose a format that exists on the video!\nMade by SamzyDev"
             else:
                 error = "Made by SamzyDev"
