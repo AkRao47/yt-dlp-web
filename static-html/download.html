@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>yt-dlp frontend - SamzyDev</title>
+  <style>
+    html{
+      color-scheme: dark !important
+    }
+    body{
+      background-color: #181a1b
+    }
+    ::-webkit-scrollbar{
+      scrollbar-color: #454a4d #202324;
+    }
+  </style>
+</head>
+<body>
+  <center>
+  <h3>ytp-dlp frontend</h3><br>
+  <h4>a simple youtube downloader script</h4><br>
+  <img src='{{ thumbnail_link }}' alt="thumbnail"><br><br><br>
+  <button onclick="window.open('{{ download_link }}')" type="button">Download</button>
+  <p> Format: {{ format }}</p>
+  <strong>{{ error }}</strong>
+</center>
+</body>
+</html>
