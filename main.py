@@ -34,7 +34,7 @@ def data():
         return "This is a POST API, there is nothing for a GET request here..."
     if request.method == 'POST':
         if re.match(r'https://www\.youtube\.com/watch\?v=[A-Za-z0-9]+', request.form['yt_url'], re.IGNORECASE) is None:
-            return "Given URL did not meet requirements!<br>Make sure it is in the following format:" 
+            return "Given URL did not meet requirements!<br>Make sure it is in the following format:"
         +"<br>https://www.youtube.com/watch?v=CuBm69OolMk"
         ydl_opts = {}
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -58,7 +58,7 @@ def data():
             case _:
                 send_format = "Unknown Format"
 
-        return render_template('download.html',download_link = final_link, format=send_format, error=error, thumbnail_link = thumbnail_link)
+        return render_template('download.html', download_link=final_link, format=send_format, error=error, thumbnail_link=thumbnail_link)
 
 
 app.run(host='0.0.0.0', port=80)
