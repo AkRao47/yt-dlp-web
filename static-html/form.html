@@ -21,14 +21,9 @@
         <h3>ytp-dlp frontend</h3><br>
         <h4>a simple youtube downloader script</h4><br>
         <form action="/data" method = "POST">
-            <p>YouTube URL<br><input class="yt_url" type = "text" name = "yt_url" value = "ex. https://www.youtube.com/watch?v=o-YBDTqX_ZU"/></p>
-            <label for="format">Format</label><br>
-            <select id="format" name="format">
-              <option value="137">Video + Audio (1080p)</option>
-              <option value="22">Video + Audio (720p)</option>
-              <option value="140">Audio Only (M4A)</option>
-              <option value="251">Audio Only (WEBM)</option>
-            </select>
+            <p><strong>YouTube URL</strong><br><br>
+            <input style="width: 400px" class="yt_url" type = "text" name = "yt_url"/></p>
+            <strong>ex. https://www.youtube.com/watch?v=o-YBDTqX_ZU</strong>
             <p><input type = "submit" value = "Submit" /></p>
         </form>
         <strong>note: does not support adblock urls! </strong>
