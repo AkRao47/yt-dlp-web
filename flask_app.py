@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import yt_dlp
 import json
-import re
+import re,os
 
 
 def download_regex(input_text, localformat):
@@ -50,4 +50,4 @@ def data():
                                thumbnail_link=thumbnail_link)
 
 
-app.run(host='0.0.0.0', port=8080)
+app.run(host='0.0.0.0', port=os.environ.get('PORT')
